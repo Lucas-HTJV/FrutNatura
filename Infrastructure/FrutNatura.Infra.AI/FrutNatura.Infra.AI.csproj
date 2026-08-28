@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	
+		<!-- Precisos para IServiceCollection e IConfiguration em class libraries -->
+		<ItemGroup>
+			<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+			<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+			<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
+			<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+			<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+			<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+			
+		</ItemGroup>
+
+		<!-- (Opcional, caso use Options pattern) -->
+		<!-- <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" /> -->
+	
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Core\FrutNatura.Core.Abstractions\FrutNatura.Core.Abstractions.csproj" />
+	</ItemGroup>
+
+</Project>

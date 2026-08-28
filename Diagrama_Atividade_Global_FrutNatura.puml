@@ -1,0 +1,185 @@
+@startuml
+title Diagrama de Atividade — GLOBAL (FrutNatura)
+
+skinparam activity {
+  BackgroundColor #FFFFFF
+  BorderColor #555555
+  ArrowColor  #555555
+  DiamondBackgroundColor #F0F0F0
+  StartColor #777777
+  EndColor   #777777
+}
+skinparam roundcorner 14
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam partitionBorderColor #999999
+skinparam partitionBackgroundColor #FFFFFF
+skinparam NoteBackgroundColor #FFFFF7
+skinparam NoteBorderColor #C0C0C0
+
+' ==== SWIMLANES EM COLUNAS ====
+|Cliente|
+start
+:Inicia sessão no sistema;
+
+|Sistema (Controllers)|
+:Exibe tela de Login / Registro;
+
+|Aplicação (Handlers – Auth)|
+if (Escolha?) then (Login)
+  :Validar credenciais;
+  if (Credenciais OK?) then (Sim)
+    :Emitir JWT / Refresh Token;
+  else (Não)
+    :Retornar erro de autenticação;
+    |Cliente|
+    :Vê mensagem de erro;
+    stop
+  endif
+else (Registrar)
+  :Validar dados de registro;
+  :Criar usuário;
+  :Emitir JWT inicial;
+endif
+
+|Cliente|
+:Autenticado com sucesso;
+
+' ===================== ABRIR CHAMADO =====================
+|Cliente|
+:Preenche Título,\nDescrição, Prioridade;
+:Enviar "Abrir Chamado";
+
+|Sistema (Controllers)|
+:Recebe POST\n/clientes/{id}/chamados;
+:Monta AbrirChamadoCommand;
+
+|Aplicação (Handlers – Chamados)|
+:Validar dados do chamado;
+
+|IA do Sistema|
+:Analisar descrição;
+if (Sugestão?) then (Sim)
+  :Anexar sugestão ao chamado;
+else (Não)
+  :Prosseguir sem sugestão;
+endif
+
+|Aplicação (Handlers – Chamados)|
+:Chamado.Abrir(...);\nCriar entidade Chamado;
+
+|Persistência (Repositório/UnitOfWork)|
+:ChamadosRepository.AddAsync(chamado);
+:UnitOfWork.SaveChangesAsync();
+
+|Sistema (Controllers)|
+:Retornar confirmação\n(Id do Chamado, Status=Aberto);
+
+|Cliente|
+:Visualiza confirmação;
+
+' ===================== TRIAGEM / ATRIBUIÇÃO =====================
+|Sistema (Controllers – Staff)|
+:Operador abre lista de chamados pendentes;
+
+|Aplicação (Handlers – Chamados)|
+:Consultar chamados por status/cliente\n(ListarChamados...);
+
+|Persistência (Repositório/UnitOfWork)|
+:Buscar página de chamados + total;
+
+|Sistema (Controllers – Staff)|
+:Exibir lista paginada ao agente;
+
+|Cliente|
+:Opcional: Enviar mensagem de complemento;
+
+|Sistema (Controllers – Mensagens)|
+:Receber POST /chamados/{id}/mensagens;
+:Monta EnviarMensagemCommand;
+
+|Aplicação (Handlers – Mensagens)|
+:Mensagem.Criar(...);
+
+|Persistência (Repositório/UnitOfWork)|
+:MensagensRepository.AddAsync(msg);
+:UnitOfWork.SaveChangesAsync();
+
+|Sistema (Controllers)|
+:Confirma mensagem registrada;
+
+|Suporte (Agente)|
+:Atribuir chamado a um responsável;
+
+|Sistema (Controllers – Staff)|
+:Receber POST /staff/chamados/{id}/atribuir;
+
+|Aplicação (Handlers – Chamados)|
+:Carregar Chamado por Id;
+:Chamado.Atribuir(responsavelId);
+
+|Persistência (Repositório/UnitOfWork)|
+:ChamadosRepository.UpdateAsync(chamado);
+:UnitOfWork.SaveChangesAsync();
+
+' ===================== ATENDIMENTO / FECHAMENTO =====================
+|Suporte (Agente)|
+:Responder chamado (enviar mensagem);
+
+|Sistema (Controllers – Mensagens)|
+:Receber POST /chamados/{id}/mensagens;
+:Monta EnviarMensagemCommand;
+
+|Aplicação (Handlers – Mensagens)|
+:Mensagem.Criar(...);
+
+|Persistência (Repositório/UnitOfWork)|
+:MensagensRepository.AddAsync(msg);
+:UnitOfWork.SaveChangesAsync();
+
+|Suporte (Agente)|
+:Marcar como Resolvido/Fechado;
+
+|Sistema (Controllers – Staff)|
+:Receber POST /staff/chamados/{id}/status;
+
+|Aplicação (Handlers – Chamados)|
+:Chamado.AlterarStatus(StatusResolvido/Fechado);
+
+|Persistência (Repositório/UnitOfWork)|
+:UpdateAsync(chamado);
+:UnitOfWork.SaveChangesAsync();
+
+|Sistema (Controllers)|
+:Retornar status final ao cliente;
+
+|Cliente|
+:Visualiza chamado encerrado;
+
+' ===================== ADMIN (GESTÃO) =====================
+|Administrador|
+:Acessar área administrativa;
+
+|Sistema (Controllers – Admin/Auth)|
+:Exibe painéis de gestão;
+
+|Aplicação (Handlers – Usuários/Relatórios)|
+:Gerenciar usuários\n(Criar/Atualizar/Ativar/Desativar);
+:Gerar métricas e relatórios;
+
+|Persistência (Repositório/UnitOfWork)|
+:Salvar alterações/consultar dados;
+
+|Administrador|
+:Operações concluídas;
+
+|Cliente|
+stop
+
+legend left
+**Legenda**
+• Swimlanes: Cliente | Sistema (Controllers) | Aplicação (Handlers) | IA | Persistência | Suporte | Administrador
+• Fluxos cobertos: Login/Registro, Abrir Chamado, Triagem/IA, Mensagens, Atribuição, Fechamento, Gestão/Admin
+• Persistência: Repositórios + UnitOfWork
+endlegend
+@enduml

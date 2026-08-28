@@ -1,0 +1,94 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+
+' ===== Enums =====
+enum Prioridade {
+  Baixa
+  Normal
+  Alta
+  Critica
+}
+
+enum StatusChamado {
+  Aberto
+  EmAtendimento
+  AguardandoCliente
+  Resolvido
+  Fechado
+}
+
+' ===== Value Objects =====
+class Email {
+  +string Valor
+}
+
+class Protocolo {
+  +string Valor
+}
+
+' ===== Entities =====
+class Usuario {
+  +Guid Id
+  +string Nome
+  +Email Email
+  +bool Ativo
+  +string PasswordHash
+  +string RolesSerialized
+}
+
+class Chamado {
+  +Guid Id
+  +Guid ClienteId
+  +string Titulo
+  +string Descricao
+  +StatusChamado Status
+  +Prioridade Prioridade
+  +Guid? ResponsavelId
+  +DateTime CriadoEmUtc
+  +DateTime? FechadoEmUtc
+  +Protocolo Protocolo
+}
+
+class Mensagem {
+  +Guid Id
+  +Guid ChamadoId
+  +Guid? AutorId
+  +string Texto
+  +DateTime CriadoEmUtc
+}
+
+class RefreshToken {
+  +Guid Id
+  +Guid UserId
+  +string Token
+  +DateTime CreatedUtc
+  +DateTime ExpiresUtc
+  +DateTime? RevokedUtc
+}
+
+' ===== Relationships =====
+' Usuário possui vários tokens
+Usuario "1" --> "*" RefreshToken
+
+' Chamado possui várias mensagens
+Chamado "1" --> "*" Mensagem
+
+' Chamado possui cliente obrigatório e responsável opcional
+Chamado --> Usuario : Cliente (ClienteId)
+Chamado --> Usuario : Responsavel (ResponsavelId)
+
+' Mensagem pode ter autor (usuário)
+Mensagem --> Usuario : Autor (AutorId)
+
+' Chamado usa enums
+Chamado --> Prioridade
+Chamado --> StatusChamado
+
+' Usuario usa Email VO
+Usuario --> Email
+
+' Chamado usa Protocolo VO
+Chamado --> Protocolo
+
+@enduml

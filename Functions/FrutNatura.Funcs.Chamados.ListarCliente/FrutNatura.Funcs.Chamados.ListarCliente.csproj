@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>10.0</LangVersion>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Application\FrutNatura.App.Application\FrutNatura.App.Application.csproj" />
+	  <ProjectReference Include="..\..\Core\FrutNatura.Core.Abstractions\FrutNatura.Core.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\Core\FrutNatura.Core.Contracts\FrutNatura.Core.Contracts.csproj" />
+	</ItemGroup>
+</Project>

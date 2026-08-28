@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ecommerce">
+
+
+    <View
+
+        android:id="@+id/view"
+        style="@style/SuportContainer"
+        android:layout_width="411dp"
+        android:layout_height="83dp"
+        app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/FrutNatura_suport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="FrutNatura - Suporte"
+        android:textColor="@color/Verde"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/problema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Descreva seu problema"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+    <TextView
+        android:id="@+id/assunto"
+        android:layout_width="64dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Assunto"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/problema"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/CAMPO_assunto"
+        style="@style/Edit_Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Assunto"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textMultiLine"
+        android:minLines="1"
+        android:maxLines="2"
+        android:ellipsize="none"
+        android:scrollHorizontally="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assunto" />
+
+
+    <TextView
+        android:id="@+id/Descrição"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Descrição"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/problema"
+        app:layout_constraintVertical_bias="0.188" />
+
+    <EditText
+        android:id="@+id/CAMPO_descricao"
+        style="@style/Edit_Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Descrição"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textMultiLine"
+        android:minLines="1"
+        android:maxLines="2"
+        android:ellipsize="none"
+        android:scrollHorizontally="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Descrição" />
+
+    <TextView
+        android:id="@+id/Categoria"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Categoria"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/problema"
+        app:layout_constraintVertical_bias="0.358" />
+
+    <EditText
+        android:id="@+id/CAMPO_categoria"
+        style="@style/Edit_Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Categoria"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textMultiLine"
+        android:minLines="1"
+        android:maxLines="2"
+        android:ellipsize="none"
+        android:scrollHorizontally="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Categoria" />
+
+
+    <TextView
+        android:id="@+id/Urgencia"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Urgência"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/problema"
+        app:layout_constraintVertical_bias="0.532" />
+
+    <EditText
+        android:id="@+id/CAMPO_urgencia"
+        style="@style/Edit_Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Urgência"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textMultiLine"
+        android:minLines="1"
+        android:maxLines="2"
+        android:ellipsize="none"
+        android:scrollHorizontally="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Urgencia" />
+
+    <TextView
+        android:id="@+id/Anexar_Arquivo"
+        android:layout_width="135dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="20dp"
+        android:text="Anexar Arquivo"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/problema"
+        app:layout_constraintVertical_bias="0.706" />
+
+    <EditText
+
+        android:id="@+id/CAMPO_anexarArquivo"
+        style="@style/Edit_Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Anexar Arquivo"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textMultiLine"
+        android:minLines="1"
+        android:maxLines="2"
+        android:ellipsize="none"
+        android:scrollHorizontally="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Anexar_Arquivo" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_enviar_chamado"
+        style="@style/Button_eviar_chamado"
+        android:text="Enviar"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CAMPO_anexarArquivo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naturefruit</title>
+
+    <!-- CSS e ícones -->
+    <link rel="stylesheet" href="/Cliente/TelaDeLogin/style.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="form-box">
+
+            <!-- LOGIN -->
+            <form class="loginform" id="loginForm">
+                <h2>Login</h2>
+
+                <div class="input-box">
+                    <input type="text" id="loginUsuario" required />
+                    <label>Usuário</label>
+                    <i class='bx bxs-user'></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" id="loginSenha" required />
+                    <label>Senha</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+
+                <div class="forget-selection">
+                    <p><input type="checkbox" id="lembrarSenha" /> Lembrar Senha</p>
+                    <a href="#">Esqueci minha Senha</a>
+                </div>
+
+                <button type="submit" class="btn">Acessar</button>
+
+                <div class="account-creation">
+                    <span>Ainda não tem cadastro? <a href="#" class="registrolink">Registrar-se</a></span>
+                </div>
+
+                <div id="loginMensagem"></div>
+            </form>
+
+            <!-- REGISTRO -->
+            <form class="registroform" id="registroForm">
+                <h2>Registro</h2>
+
+                <div class="input-box">
+                    <input type="text" id="regNome" required />
+                    <label>Nome</label>
+                    <i class='bx bxs-user-detail'></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="text" id="regUsuario" required />
+                    <label>Usuário (e-mail)</label>
+                    <i class='bx bxs-user'></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" id="regSenha" required />
+                    <label>Senha</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" id="regConfirmaSenha" required />
+                    <label>Confirmar Senha</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+
+                <button type="submit" class="btn">Registrar</button>
+
+                <div class="account-creation">
+                    <span>Já tem cadastro? <a href="#" class="loginlink">Login</a></span>
+                </div>
+
+                <div id="registroMensagem"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script principal -->
+    <script type="module" src="/Cliente/TelaDeLogin/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ecommerce">
+
+
+    <View
+
+        android:id="@+id/containerComponents"
+        style="@style/containerEcomm"
+        android:layout_width="411dp"
+        android:layout_height="83dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nome_frutinicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="FrutNatura"
+        android:textColor="@color/laranja"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="102dp"
+        android:layout_height="99dp"
+        android:layout_marginBottom="640dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logofolha" />
+
+
+    <TextView
+        android:id="@+id/produtos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:text="Produtos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerComponents" />
+
+    <TextView
+        android:id="@+id/sobre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:text="Sobre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toEndOf="@+id/produtos"
+        app:layout_constraintTop_toBottomOf="@+id/containerComponents" />
+
+    <TextView
+        android:id="@+id/contato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Contato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintStart_toEndOf="@+id/sobre"
+        app:layout_constraintTop_toBottomOf="@+id/containerComponents" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/containerPromo"
+        android:layout_width="359dp"
+        android:layout_height="154dp"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/produtos">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerBanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ImageView
+        android:id="@+id/maçaProduto"
+        android:layout_width="102dp"
+        android:layout_height="99dp"
+        app:srcCompat="@drawable/maca_"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerPromo"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/maca_iten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/icon_carrinho"
+        android:text="Maçã - R$4,99 / Kg"
+        app:layout_constraintStart_toEndOf="@id/maçaProduto"
+        app:layout_constraintTop_toTopOf="@id/maçaProduto"
+        android:layout_marginStart="16dp" />
+
+
+    <ImageView
+        android:id="@+id/BananaProduto"
+        android:layout_width="102dp"
+        android:layout_height="99dp"
+        app:srcCompat="@drawable/banana_"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maçaProduto"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/icon_carrinho"
+        android:text="Banana - R$3,50 / Kg"
+        app:layout_constraintStart_toEndOf="@id/BananaProduto"
+        app:layout_constraintTop_toTopOf="@id/BananaProduto"
+        android:layout_marginStart="16dp" />
+
+
+    <ImageView
+        android:id="@+id/alface"
+        android:layout_width="102dp"
+        android:layout_height="99dp"
+        app:srcCompat="@drawable/alface_"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BananaProduto"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/pre_alface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/icon_carrinho"
+        android:text="Alface - R$2,00 / un"
+        app:layout_constraintStart_toEndOf="@id/alface"
+        app:layout_constraintTop_toTopOf="@id/alface"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/ajuda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/icon_ajuda"
+        android:text="Ajuda"
+        app:layout_constraintBottom_toTopOf="@+id/contato"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toEndOf="@+id/nome_frutinicio"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.507" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+

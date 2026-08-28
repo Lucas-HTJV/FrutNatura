@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- MediatR para comandos/queries e behaviors -->
+		<PackageReference Include="MediatR" Version="12.2.0" />
+		<!-- FluentValidation + integração com DI -->
+		<PackageReference Include="FluentValidation" Version="11.11.0" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+		<!-- Logging usado por Performance/UnhandledException behaviors -->
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+		<!-- AutoMapper (há Profiles/ no projeto) -->
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+		
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Core\FrutNatura.Core.Abstractions\FrutNatura.Core.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\Core\FrutNatura.Core.Contracts\FrutNatura.Core.Contracts.csproj" />
+	  <ProjectReference Include="..\..\Core\FrutNatura.Core.Domain\FrutNatura.Core.Domain.csproj" />
+	</ItemGroup>
+
+</Project>

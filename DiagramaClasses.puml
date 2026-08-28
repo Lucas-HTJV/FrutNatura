@@ -1,0 +1,18 @@
+@startuml
+class Chamado {
+  +Guid Id
+  +string Titulo
+  +string Descricao
+  +int Prioridade
+  +string Status
+}
+
+class Mensagem {
+  +Guid Id
+  +Guid ChamadoId
+  +string Texto
+  +DateTime CriadoEm
+}
+
+Chamado "1" --> "*" Mensagem
+@enduml

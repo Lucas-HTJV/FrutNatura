@@ -1,0 +1,43 @@
+# ===== Visual Studio / .NET =====
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ===== Build results =====
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww]in32/
+[Aa]rmProcessor/
+
+# ===== Segredos / configs locais =====
+appsettings.Development.json
+appsettings.local.json
+local.settings.json
+*.pfx
+*.pem
+secrets.json
+
+# ===== IDEs =====
+.idea/
+*.swp
+
+# ===== Sistema Operacional =====
+.DS_Store
+Thumbs.db
+
+# ===== Node (caso o front use) =====
+node_modules/
+dist/
+
+# ===== Android / Gradle =====
+build/
+.gradle/
+*.apk
+*.aab
+local.properties

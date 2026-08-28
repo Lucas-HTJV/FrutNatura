@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FrutNatura - Suporte</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg custom-navbar shadow-sm">
+        <div class="container">
+            <a class="navbar-brand brand-logo d-flex align-items-center" href="/Cliente/TelaPrincipal/Naturefruit.html" aria-label="FrutNatura">
+                <!-- ÍCONE: folha verde -->
+                <svg class="fn-mark" width="34" height="34" viewBox="0 0 64 64" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="fnLeafGreen" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#66BB6A" />
+                            <stop offset="100%" stop-color="#2E7D32" />
+                        </linearGradient>
+                    </defs>
+                    <!-- folha -->
+                    <path d="M45 10c-7 0-11 6-12 9 6 1 13-1 18-6-1-2-3-3-6-3z" fill="url(#fnLeafGreen)" />
+                    <!-- caule -->
+                    <path d="M40 14c-2 1-3 3-3 5 2 0 4-1 5-3 0-1-1-2-2-2z" fill="#2E7D32" />
+                </svg>
+
+                <!-- texto gradiente -->
+                <span class="fn-word">🍃 FrutNatura</span>
+            </a>
+
+            <button class="navbar-toggler nav-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="nav-toggler-bar"></span>
+                <span class="nav-toggler-bar"></span>
+                <span class="nav-toggler-bar"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-links">
+                    <li class="nav-item"><a class="nav-link" href="/Cliente/TelaPrincipal/Naturefruit.html">Início</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="menuAbrirChamado" data-bs-toggle="modal" data-bs-target="#ticketModal">
+                            Abrir Chamado
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="menuAcompanharChamado">Acompanhar Chamado</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Cliente/TelaPrincipal/Naturefruit.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-section text-center">
+        <div class="container py-5">
+            <h1 class="hero-title">Suporte FrutNatura</h1>
+            <p class="hero-subtitle">Abra e acompanhe seus chamados rapidamente</p>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="support-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Abertura -->
+                <div class="col-lg-6">
+                    <div class="support-card h-100 text-center p-4">
+                        <h3 class="card-title mb-4">Abertura de Chamado</h3>
+                        <button class="btn btn-success btn-lg mb-3"
+                                id="btnAbrirChamado"
+                                data-bs-toggle="modal"
+                                data-bs-target="#ticketModal">
+                            Abrir Novo Chamado
+                        </button>
+                        <p class="card-text text-muted">Registre seu problema e abra um novo chamado de suporte.</p>
+                    </div>
+                </div>
+
+                <!-- Acompanhar -->
+                <div class="col-lg-6">
+                    <div class="support-card h-100 text-center p-4">
+                        <h3 class="card-title mb-4">Acompanhar Chamado</h3>
+                        <form id="statusForm" class="mb-3 form-container">
+                            <input type="text" class="form-control form-control-lg" id="queryInput"
+                                   placeholder="Digite o número do chamado ou seu e-mail" required />
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-secondary btn-lg">Consultar Status</button>
+                            </div>
+                        </form>
+                        <p class="card-text text-muted mb-0">Veja o andamento utilizando o número do chamado ou seu e-mail.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL: Abrir chamado -->
+    <div class="modal fade" id="ticketModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Abrir Novo Chamado</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- FORM com layout melhor e validação visual -->
+                    <form id="ticketForm" class="form-container">
+                        <h5 class="mb-3">Detalhes do chamado</h5>
+
+                        <!-- TÍTULO -->
+                        <div class="mb-3">
+                            <label for="subject" class="form-label fw-semibold">Título <span class="text-danger">*</span></label>
+                            <input type="text" id="subject" class="form-control" placeholder="Ex.: Erro ao finalizar compra"
+                                   maxlength="120" required>
+                            <div class="form-text d-flex justify-content-between">
+                                <span>Entre 3 e 120 caracteres</span>
+                                <span id="subjectCount">0/120</span>
+                            </div>
+                        </div>
+
+                        <!-- DESCRIÇÃO -->
+                        <div class="mb-3">
+                            <label for="description" class="form-label fw-semibold">Descrição <span class="text-danger">*</span></label>
+                            <textarea id="description" class="form-control" rows="5"
+                                      placeholder="Explique o que está acontecendo, passos para reproduzir e anexos/capturas se possível."
+                                      maxlength="2000" required></textarea>
+                            <div class="form-text d-flex justify-content-between">
+                                <span>Entre 10 e 2000 caracteres</span>
+                                <span id="descriptionCount">0/2000</span>
+                            </div>
+                        </div>
+
+                        <!-- PRIORIDADE (rádio) -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Prioridade <span class="text-danger">*</span></label>
+                            <div class="d-flex gap-3 flex-wrap">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="priorityOptions" id="prioBaixa" value="Baixa">
+                                    <label class="form-check-label" for="prioBaixa">Baixa</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="priorityOptions" id="prioMedia" value="Media" checked>
+                                    <label class="form-check-label" for="prioMedia">Média</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="priorityOptions" id="prioAlta" value="Alta">
+                                    <label class="form-check-label" for="prioAlta">Alta</label>
+                                </div>
+                            </div>
+                            <div class="form-text">Selecione a urgência percebida.</div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Enviar Chamado</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Status -->
+    <div class="modal fade" id="statusModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary text-white">
+                    <h5 class="modal-title">Status dos Chamados</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <!-- aqui vão os dados do chamado + mensagens -->
+                    <div id="statusResult"></div>
+
+                    <hr class="mt-4 mb-3" />
+
+                    <!-- área para responder ao chamado -->
+                    <h6 class="mb-2">Responder ao chamado</h6>
+                    <div class="d-flex gap-2">
+                        <textarea id="replyInput" class="form-control" rows="2"
+                                  placeholder="Digite sua resposta para o atendente..."></textarea>
+                        <button type="button" class="btn btn-success align-self-start"
+                                onclick="window.enviarMensagem()">
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Foco automático no “Título” quando o modal abre -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const modalEl = document.getElementById('ticketModal');
+            modalEl?.addEventListener('shown.bs.modal', function () {
+                modalEl.querySelector('#subject')?.focus();
+            });
+        });
+    </script>
+
+    <!-- Script da tela de chamados -->
+    <script type="module" src="/Cliente/TelaDeChamado/script.js"></script>
+</body>
+</html>

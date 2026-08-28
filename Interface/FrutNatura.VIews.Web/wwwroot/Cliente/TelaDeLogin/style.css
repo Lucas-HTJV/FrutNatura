@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    color: #000000;
+}
+
+body {
+    background: url("/Cliente/TelaDeLogin/Img.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 520px;
+    width: 450px;
+    border: 2px solid rgba(255, 255, 255, .4);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .2);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2), 0 0 15px rgba(0, 0, 0, .2), 0 0 30px rgba(0, 0, 0, .2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: height 0.4s ease;
+}
+
+    /* aumenta o container na tela de registro */
+    .container.registro-ativo {
+        height: 600px;
+    }
+
+.form-box {
+    display: flex;
+}
+
+    .form-box .loginform {
+        position: absolute;
+        transform: translateX(0px) rotate(0deg);
+        transition: .5s ease;
+        transition-delay: .4s;
+    }
+
+        .form-box .loginform.active {
+            transform: translateX(-450px) rotate(-45deg);
+            transition-delay: .2s;
+        }
+
+    .form-box .registroform {
+        transform: translateX(450px) rotate(45deg);
+        transition-delay: .2s;
+    }
+
+        .form-box .registroform.active {
+            transform: translateX(0px) rotate(0deg);
+            transition-delay: .4s;
+        }
+
+.container .form-box h2 {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 700;
+    color: white;
+}
+
+.form-box .input-box {
+    margin: 25px 0;
+    width: 330px;
+    border-bottom: 2px solid rgba(255, 255, 255, .4);
+    position: relative;
+}
+
+    .form-box .input-box input {
+        background: transparent;
+        border: none;
+        outline: none;
+        width: 100%;
+        height: 40px;
+        padding: 0 35px 0 5px;
+        color: white;
+    }
+
+    .form-box .input-box label {
+        font-weight: 700;
+        letter-spacing: .5px;
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: .5s ease;
+        color: white;
+    }
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+    top: -5px;
+}
+
+.input-box i {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: white;
+}
+
+.forget-selection {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin: -15px 0 15px;
+    color: white;
+}
+
+    .forget-selection a {
+        text-decoration: none;
+        color: white;
+    }
+
+.btn {
+    height: 45px;
+    width: 100%;
+    border-radius: 50px;
+    color: #fff;
+    background: black;
+    border: 2px solid black;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.account-creation {
+    text-align: center;
+    margin: 25px 0 10px;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+}
+
+    .account-creation a {
+        color: white;
+        text-decoration: underline;
+    }
+
+/* mensagens */
+#loginMensagem, #registroMensagem {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+}
+
+/* Responsivo */
+@media(max-width:768px) {
+    .container {
+        height: 500px;
+        width: 380px;
+    }
+
+        .container.registro-ativo {
+            height: 580px;
+        }
+
+        .container .form-box h2 {
+            font-size: 32px;
+        }
+
+    .form-box .input-box {
+        width: 300px;
+    }
+}
+
+@media(max-width:480px) {
+    .container {
+        height: 470px;
+        width: 310px;
+    }
+
+        .container.registro-ativo {
+            height: 540px;
+        }
+
+    .form-box .input-box {
+        wid

@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam roundcorner 15
+skinparam usecase {
+  BackgroundColor #F7F7F7
+  BorderColor #666666
+  ArrowColor #666666
+}
+title Diagrama de Casos de Uso — Cliente
+
+actor "Cliente" as Cliente
+actor "IA do Sistema" as IA
+
+rectangle "Sistema de Suporte Técnico - FrutNatura" as Sistema {
+  (Abrir Chamado) as UC_Abrir
+  (Consultar Chamados) as UC_Consultar
+  (Enviar Mensagem) as UC_Msg
+  (Visualizar Respostas da IA) as UC_RespIA
+
+  (Analisar Descrição) as UC_Analise
+  (Sugerir Solução) as UC_Sugerir
+
+  ' Relacionamentos entre casos de uso
+  UC_Abrir --> UC_Analise : <<include>>
+  UC_Analise --> UC_Sugerir : <<extend>>
+}
+
+' Ligações ator ↔ casos de uso
+Cliente --> UC_Abrir
+Cliente --> UC_Consultar
+Cliente --> UC_Msg
+Cliente --> UC_RespIA
+
+IA --> UC_Analise
+IA --> UC_Sugerir
+@enduml

@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<!-- opcional em dev: -->
+		<!--<UserSecretsId>FrutNatura2-Local-Secrets</UserSecretsId>-->
+	</PropertyGroup>
+
+	<!-- Pacotes necessários para Swagger e validação automática de DTOs -->
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="8.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
+		<PackageReference Include="Serilog" Version="4.3.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+		<PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+	</ItemGroup>
+
+	<!-- Referências para as camadas da solução -->
+
+	<!-- (Opcional) arquivos adicionais para facilitar publicação -->
+	<ItemGroup>
+		<None Include="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="appsettings.Development.json" CopyToOutputDirectory="PreserveNewest" Condition=" '$(Configuration)' == 'Debug' " />
+	</ItemGroup>
+	<ItemGroup>
+
+	  <ProjectReference Include="..\Application\FrutNatura.App.Application\FrutNatura.App.Application.csproj" />
+	  <ProjectReference Include="..\Core\FrutNatura.Core.Abstractions\FrutNatura.Core.Abstractions.csproj" />
+	  <ProjectReference Include="..\Core\FrutNatura.Core.Contracts\FrutNatura.Core.Contracts.csproj" />
+	  <ProjectReference Include="..\Infrastructure\FrutNatura.Infra.AI\FrutNatura.Infra.AI.csproj" />
+	  <ProjectReference Include="..\Infrastructure\FrutNatura.Infra.Email\FrutNatura.Infra.Email.csproj" />
+	  <ProjectReference Include="..\Infrastructure\FrutNatura.Infra.Persistence\FrutNatura.Infra.Persistence.csproj" />
+	  <ProjectReference Include="..\Infrastructure\FrutNatura.Infra.Realtime\FrutNatura.Infra.Realtime.csproj" />
+	  <ProjectReference Include="..\Infrastructure\FrutNatura.Infra.Security\FrutNatura.Infra.Security.csproj" />
+	  <ProjectReference Include="..\Infrastructure\FrutNatura.Infra\FrutNatura.Infra.csproj" />
+	</ItemGroup>
+
+</Project>

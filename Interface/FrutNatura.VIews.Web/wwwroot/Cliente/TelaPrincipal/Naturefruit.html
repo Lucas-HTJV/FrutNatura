@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>FrutNatura - Hortifrúti Fresquinho</title>
+
+    <!-- Google Font e Boxicons -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="styleS.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">🍃 FrutNatura</div>
+        <nav>
+            <a href="#produtos">Produtos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <div class="header-right">
+            <button class="carrinho-btn" onclick="abrirCarrinho()">🛒 <span id="contador">0</span></button>
+            <div class="user-menu">
+                <i class='bx bxs-user-circle' id="userIcon"></i>
+                <ul class="dropdown-menu" id="dropdownMenu">
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="/HTML5/Clientes/Tela de Configuração(Cliente)/configurações.html">Configurações</a></li>
+                    <li><a href="/Cliente/TelaDeChamado/Criar chamado.html">Suporte</a></li>
+                    <li><a href="/Cliente/TelaDeLogin/Login.html">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="propaganda">🌟 Frutas e Verduras Fresquinhas com até 20% OFF 🌟</div>
+
+    <!-- CARROSSEL -->
+    <div class="carrossel-container">
+        <div class="carrossel-slide" id="carrosselSlide">
+            <div class="carrossel-item" style="background-image: url('/Cliente/TelaPrincipal/img/alface.jpg');">🍎 Maçã em Oferta 10% de desconto!</div>
+            <div class="carrossel-item" style="background-image: url('/Cliente/TelaPrincipal/img/banana.jpg');">🍌 Banana por apenas R$3,50 o kg!</div>
+            <div class="carrossel-item" style="background-image: url('/Cliente/TelaPrincipal/img/tomate.jpg');">🍅 Tomates Fresquinhos!</div>
+            <div class="carrossel-item" style="background-image: url('/Cliente/TelaPrincipal/img/repolho.jpg');">🥬 repolhos de alta qualidade!</div>
+        </div>
+        <button class="arrow arrow-left" onclick="mudarSlide(-1)">&#10094;</button>
+        <button class="arrow arrow-right" onclick="mudarSlide(1)">&#10095;</button>
+        <div class="indicadores" id="indicadores"></div>
+    </div>
+
+    <!-- PRODUTOS -->
+    <section id="produtos">
+        <h2>Nossos Produtos</h2>
+        <div class="produtos">
+            <div class="produto">
+                <img src="/Cliente/TelaPrincipal/img/alface.jpg" alt="Maçã">
+                <h3>Maçã</h3>
+                <p>R$ 4,99 / kg</p>
+                <button onclick="adicionarCarrinho('Maçã',4.99,'/Cliente/TelaPrincipal/img/alface.jpg')">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="/Cliente/TelaPrincipal/img/banana.jpg" alt="Banana">
+                <h3>Banana</h3>
+                <p>R$ 3,50 / kg</p>
+                <button onclick="adicionarCarrinho('Banana',3.50,'/Cliente/TelaPrincipal/img/banana.jpg')">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="/Cliente/TelaPrincipal/img/alfacee.jpg" alt="Alface">
+                <h3>Alface</h3>
+                <p>R$ 2,00 / un</p>
+                <button onclick="adicionarCarrinho('Alface',2.00,'/Cliente/TelaPrincipal/img/alfacee.jpg')">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="/Cliente/TelaPrincipal/img/tomate.jpg" alt="Tomate">
+                <h3>Tomate</h3>
+                <p>R$ 5,80 / kg</p>
+                <button onclick="adicionarCarrinho('Tomate',5.80,'/Cliente/TelaPrincipal/img/tomate.jpg')">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="/Cliente/TelaPrincipal/img/repolho.jpg" alt="Repolho">
+                <h3>Repolho</h3>
+                <p>R$ 2,80 / kg</p>
+                <button onclick="adicionarCarrinho('Repolho',2.80,'/Cliente/TelaPrincipal/img/repolho.jpg')">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="/Cliente/TelaPrincipal/img/melão.jpg" alt="Melão">
+                <h3>Melão</h3>
+                <p>R$ 3,20 / kg</p>
+                <button onclick="adicionarCarrinho('melão',3.20,'/Cliente/TelaPrincipal/img/melão.jpg')">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="/Cliente/TelaPrincipal/img/brocolis.jpg" alt="Brocolis">
+                <h3>Brocolis</h3>
+                <p>R$ 5,00 / un</p>
+                <button onclick="adicionarCarrinho('brocolis',5.00,'/Cliente/TelaPrincipal/img/brocolis.jpg')">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="/Cliente/TelaPrincipal/img/melancia.png" alt="Melancia">
+                <h3>Melancia</h3>
+                <p>R$ 3,00 / kg</p>
+                <button onclick="adicionarCarrinho('melancia',4.00,'/Cliente/TelaPrincipal/img/melancia.png')">Adicionar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Somos um hortifrúti local dedicado a fornecer alimentos frescos e saudáveis para sua família.</p>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>📍 Endereço: Rua das Frutas, 123 - Bairro Verde</p>
+        <p>📞 Telefone: (11) 99999-9999</p>
+        <p>📧 Email: contato@hortifacil.com</p>
+    </section>
+
+    <!-- ✅ FAQ + DEPOIMENTOS (novo) -->
+    <section id="faq">
+        <h2>Perguntas Frequentes (FAQ)</h2>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">🍎 As frutas são orgânicas?</button>
+                <div class="faq-answer">
+                    <p>Sim! Trabalhamos com produtores locais certificados, garantindo produtos 100% naturais e frescos.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">🚚 Vocês fazem entrega?</button>
+                <div class="faq-answer">
+                    <p>Sim! Entregamos em toda a região, de segunda a sábado. O valor do frete aparece ao finalizar a compra.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">💳 Quais formas de pagamento aceitam?</button>
+                <div class="faq-answer">
+                    <p>Aceitamos PIX, cartões de crédito/débito e também pagamento em dinheiro na entrega.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">🥬 Como garantir que os produtos chegam frescos?</button>
+                <div class="faq-answer">
+                    <p>Selecionamos e embalamos as frutas e verduras no mesmo dia da entrega, garantindo qualidade e frescor.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 60px;">💬 Depoimentos dos Clientes</h2>
+        <div class="feedback-container">
+            <div id="depoimentos-lista"></div>
+
+            <form id="form-depoimento">
+                <h3>Deixe sua opinião</h3>
+                <input type="text" id="nome" placeholder="Seu nome" required>
+                <textarea id="mensagem" placeholder="Escreva seu depoimento..." required></textarea>
+                <button type="submit">Enviar Depoimento</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 FrutNatura - Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- MODAL CARRINHO -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="fechar" onclick="fecharCarrinho()">X</button>
+            <h2>Seu Carrinho</h2>
+            <ul id="itens-carrinho"></ul>
+            <p>Total: R$ <span id="total">0.00</span></p>
+
+            <h3>Escolha a forma de pagamento:</h3>
+            <div class="pagamento">
+                <button onclick="mostrarPagamento('cartao')">💳 Cartão</button>
+                <button onclick="mostrarPagamento('pix')">📱 PIX</button>
+                <button onclick="mostrarPagamento('dinheiro')">💵 Dinheiro</button>
+
+                <div id="cartao" class="pagamento-form" style="display:none;">
+                    <input type="text" placeholder="Nome no cartão" id="nomeCartao">
+                    <input type="text" placeholder="Número do cartão" id="numeroCartao">
+                    <div style="display:flex; gap:5px;">
+                        <input type="text" placeholder="Validade MM/AA" id="validadeCartao" style="flex:1;">
+                        <input type="text" placeholder="CVV" id="cvvCartao" style="flex:1;">
+                    </div>
+                    <button onclick="finalizarCompra('cartao')">Pagar com Cartão</button>
+                </div>
+
+                <div id="pix" class="pagamento-form" style="display:none;">
+                    <p>Use o QR Code ou copie o código do PIX:</p>
+                    <input type="text" value="00020126580014BR.GOV.BCB.PIX0114+55119999999952040000530398654041.005802BR5913FrutNatura6009SAO PAULO62070503***6304ABCD" readonly>
+                    <button onclick="finalizarCompra('pix')">Pagar via PIX</button>
+                </div>
+
+                <div id="dinheiro" class="pagamento-form" style="display:none;">
+                    <p>Você optou por pagar em dinheiro na entrega.</p>
+                    <button onclick="finalizarCompra('dinheiro')">Confirmar Dinheiro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ✅ CHAT (novo) -->
+    <div class="chatbot-container">
+        <button id="chat-toggle" class="chat-toggle">💬</button>
+        <div id="chat-window" class="chat-window hidden">
+            <div class="chat-header">
+                <span>🤖 Suporte FrutNatura</span>
+                <button id="chat-close">✖</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message bot">Olá! 😊 Como posso ajudar você hoje?</div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chat-input" placeholder="Digite sua mensagem..." />
+                <button id="chat-send">Enviar</button>
+            </div>
+        </div>
+    </div>
+    <script src="Site Principal.js"></script>
+    <!-- SUA NAV / CONTEÚDO AQUI -->
+    <!-- Guard + helpers -->
+    <script type="module">
+        import { requireAuth, apiFetch } from "/site/Cliente/_shared/auth.js";
+
+        // trava a página se não houver token (redireciona pro login)
+        const token = requireAuth({
+            // ajuste se o nome do arquivo do login for diferente
+            loginUrl: `${location.origin.replace(/\:7167$/, ":5000")}/site/Cliente/TelaDeLogin/index.html`
+        });
+        if (!token) throw new Error("Sem token");
+
+        // exemplo: checar status do backend
+        (async () => {
+            try {
+                const resp = await apiFetch(`${location.origin.replace(/\:7167$/, ":5000")}/api/health`, { method: "GET" });
+                // se existir esse endpoint, ok; se não, ignore
+            } catch (e) {
+                console.warn("API não respondeu ao health (ok se não existir):", e);
+            }
+        })();
+
+        // Sair (exemplo – coloque no seu botão de sair)
+        window.fnLogout = () => {
+            sessionStorage.removeItem("token");
+            sessionStorage.removeItem("usuario");
+            requireAuth(); // vai mandar pro login
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações do Sistema</title>
+  <link rel="stylesheet" href="configuracoes.css">
+</head>
+<body>
+  <div class="container">
+    <a href="/HTML5/Clientes/Site Principal(Cliente)/Naturefruit.html" class="back-btn">⬅ Voltar</a>
+    <h2>⚙️ Configurações</h2>
+
+    <!-- Tema: Sol/Lua -->
+    <div class="setting">
+      <label>Tema:</label>
+      <div class="theme-buttons">
+        <button id="lightBtn">☀️</button>
+        <button id="darkBtn">🌙</button>
+      </div>
+      <!-- Select escondido para compatibilidade -->
+      <select id="theme" style="display:none;">
+        <option value="light">Claro</option>
+        <option value="dark">Escuro</option>
+      </select>
+    </div>
+
+    <div class="setting">
+      <label for="language">Idioma:</label>
+      <select id="language">
+        <option value="pt">Português</option>
+        <option value="en">Inglês</option>
+        <option value="es">Espanhol</option>
+      </select>
+    </div>
+
+    <div class="setting">
+      <label for="currency">Moeda:</label>
+      <select id="currency">
+        <option value="BRL">R$ - Real</option>
+        <option value="USD">US$ - Dólar</option>
+        <option value="EUR">€ - Euro</option>
+      </select>
+    </div>
+
+    <div class="setting">
+      <label for="unit">Unidade de Medida:</label>
+      <select id="unit">
+        <option value="kg">Quilograma (kg)</option>
+        <option value="g">Gramas (g)</option>
+        <option value="un">Unidade</option>
+        <option value="cx">Caixa</option>
+      </select>
+    </div>
+
+    <div class="setting">
+      <label for="showCents">Exibir centavos:</label>
+      <input type="checkbox" id="showCents" checked>
+    </div>
+
+    <div class="setting">
+      <label for="stockAlerts">Alertar estoque baixo:</label>
+      <input type="checkbox" id="stockAlerts" checked>
+    </div>
+
+    <hr>
+
+    <h3>💳 Formas de Pagamento</h3>
+    <div class="setting">
+      <input type="text" id="paymentInput" placeholder="Ex: Dinheiro, PIX, Cartão...">
+      <button class="add-payment">➕ Adicionar</button>
+    </div>
+    <ul id="paymentList" class="payment-list"></ul>
+
+    <button class="save" onclick="saveSettings()">💾 Salvar Configurações</button>
+  </div>
+
+  <script src="configuracoes.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Base */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Navbar */
+.custom-navbar {
+    background: linear-gradient(90deg, #4CAF50, #2E7D32);
+    padding: 0.8rem 1rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* LOGO */
+.brand-logo {
+    text-decoration: none;
+}
+
+.fn-mark {
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.25));
+    margin-right: 8px;
+}
+
+.fn-word {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 1.9rem;
+    letter-spacing: .2px;
+    line-height: 1;
+    background: linear-gradient(90deg, #ffb300 0%, #ff7a00 55%, #ff4d1a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Links */
+.nav-links .nav-link {
+    color: #fff !important;
+    font-weight: 600;
+    margin: 0 .5rem;
+    transition: color .2s ease, transform .15s ease;
+}
+
+    .nav-links .nav-link:hover {
+        color: #ffeb3b !important;
+        transform: translateY(-1px);
+    }
+
+/* Toggler */
+.nav-toggler {
+    border: none;
+    background: transparent;
+}
+
+    .nav-toggler:focus {
+        box-shadow: none;
+    }
+
+.nav-toggler-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    margin: 5px 0;
+}
+
+/* Hero */
+.hero-section {
+    background-color: #e9f5ec;
+}
+
+.hero-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #2E7D32;
+}
+
+.hero-subtitle {
+    color: #555;
+}
+
+/* Cards & Form */
+.support-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+    .support-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 18px rgba(0,0,0,0.08);
+    }
+
+.form-container {
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+textarea {
+    resize: none;
+}
+
+/* Botões / Modal headers */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+.modal-header.bg-success {
+    background-color: #28a745 !important;
+}
+
+.modal-header.bg-secondary {
+    background-color: #6c757d !important;
+}

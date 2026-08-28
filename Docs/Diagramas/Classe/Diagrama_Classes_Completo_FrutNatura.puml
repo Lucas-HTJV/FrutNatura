@@ -1,0 +1,231 @@
+@startuml
+title Diagrama de Classes — FrutNatura (Domínio + Infraestrutura)
+
+skinparam classAttributeIconSize 0
+skinparam roundcorner 12
+skinparam shadowing false
+skinparam linetype ortho
+
+hide empty fields
+hide circle
+
+' ======================
+' ====== Enums =========
+' ======================
+enum Prioridade {
+  Baixa
+  Normal
+  Alta
+  Critica
+}
+
+enum StatusChamado {
+  Aberto
+  EmAtendimento
+  AguardandoCliente
+  Resolvido
+  Fechado
+}
+
+' ==========================
+' ===== Value Objects ======
+' ==========================
+class Email {
+  +string Valor
+  ..Métodos..
+  +bool EhValido()
+}
+
+class Protocolo {
+  +string Valor
+}
+
+' ========================
+' ======= Domínio ========
+' ========================
+class Usuario {
+  +Guid Id
+  +string Nome
+  +Email Email
+  +bool Ativo
+  +string PasswordHash
+  +string RolesSerialized
+  ..Métodos..
+  +void Ativar()
+  +void Desativar()
+  +void ConcederRole(string role)
+  +void RevogarRole(string role)
+}
+
+class RefreshToken {
+  +Guid Id
+  +Guid UserId
+  +string Token
+  +DateTime CreatedUtc
+  +DateTime ExpiresUtc
+  +DateTime? RevokedUtc
+}
+
+class Chamado {
+  +Guid Id
+  +Guid ClienteId
+  +string Titulo
+  +string Descricao
+  +StatusChamado Status
+  +Prioridade Prioridade
+  +Guid? ResponsavelId
+  +Protocolo Protocolo
+  +DateTime CriadoEmUtc
+  +DateTime? FechadoEmUtc
+  ..Métodos..
+  +static Chamado Abrir(Guid clienteId, string titulo, string descricao, Prioridade prioridade)
+  +void Atribuir(Guid responsavelId)
+  +void AlterarStatus(StatusChamado novoStatus)
+}
+
+class Mensagem {
+  +Guid Id
+  +Guid ChamadoId
+  +Guid? AutorId
+  +string Texto
+  +DateTime CriadoEmUtc
+  ..Fábrica..
+  +static Mensagem Criar(Guid chamadoId, Guid? autorId, string texto)
+}
+
+' Relações de domínio
+Usuario "1" --> "*" RefreshToken
+Chamado "1" --> "*" Mensagem
+Chamado --> Usuario : Cliente (ClienteId)
+Chamado --> Usuario : Responsavel (ResponsavelId)
+Mensagem --> Usuario : Autor (AutorId)
+Chamado --> Prioridade
+Chamado --> StatusChamado
+Usuario --> Email
+Chamado --> Protocolo
+
+' ============================
+' ======== Abstrações ========
+' ============================
+interface IRepositoryBase<T> {
+  +Task<T> AddAsync(T entity)
+  +Task UpdateAsync(T entity)
+  +Task DeleteAsync(T entity)
+  +Task<T?> GetByIdAsync(Guid id)
+  +Task<IReadOnlyList<T>> ListAsync(object? spec)
+}
+
+interface IChamadosRepository {
+  +Task<Chamado?> GetByIdAsync(Guid id)
+  +Task<Chamado> AddAsync(Chamado chamado)
+  +Task UpdateAsync(Chamado chamado)
+  +Task<IReadOnlyList<Chamado>> ListarPorClienteAsync(Guid clienteId, int page, int size, string? status, string? prioridade)
+  +Task<int> CountPorClienteAsync(Guid clienteId, string? status, string? prioridade)
+}
+
+interface IMensagensRepository {
+  +Task<Mensagem> AddAsync(Mensagem msg)
+  +Task<IReadOnlyList<Mensagem>> ListarPorChamadoAsync(Guid chamadoId)
+}
+
+interface IUsuariosRepository {
+  +Task<Usuario?> GetByEmailAsync(string email)
+  +Task<Usuario?> GetByIdAsync(Guid id)
+  +Task<Usuario> AddAsync(Usuario user)
+  +Task UpdateAsync(Usuario user)
+}
+
+interface IRefreshTokensRepository {
+  +Task<RefreshToken> AddAsync(RefreshToken token)
+  +Task RevogarAsync(Guid tokenId)
+  +Task<IReadOnlyList<RefreshToken>> ListarPorUsuarioAsync(Guid userId)
+}
+
+interface IUnitOfWork {
+  +Task<int> SaveChangesAsync()
+  +Task BeginTransactionAsync()
+  +Task CommitAsync()
+  +Task RollbackAsync()
+}
+
+' ==================================
+' ============ Infra ================
+' ==================================
+abstract class RepositoryBase<T> {
+  -object _db
+  ..Métodos..
+  +Task<T> AddAsync(T entity)
+  +Task UpdateAsync(T entity)
+  +Task DeleteAsync(T entity)
+  +Task<T?> GetByIdAsync(Guid id)
+  +Task<IReadOnlyList<T>> ListAsync(object? spec)
+}
+
+class ChamadosRepository {
+  -IUnitOfWork _uow
+  ..Métodos..
+  +Task<Chamado?> GetByIdAsync(Guid id)
+  +Task<Chamado> AddAsync(Chamado chamado)
+  +Task UpdateAsync(Chamado chamado)
+  +Task<IReadOnlyList<Chamado>> ListarPorClienteAsync(Guid clienteId, int page, int size, string? status, string? prioridade)
+  +Task<int> CountPorClienteAsync(Guid clienteId, string? status, string? prioridade)
+}
+
+class MensagensRepository {
+  -IUnitOfWork _uow
+  ..Métodos..
+  +Task<Mensagem> AddAsync(Mensagem msg)
+  +Task<IReadOnlyList<Mensagem>> ListarPorChamadoAsync(Guid chamadoId)
+}
+
+class UsuariosRepository {
+  -IUnitOfWork _uow
+  ..Métodos..
+  +Task<Usuario?> GetByEmailAsync(string email)
+  +Task<Usuario?> GetByIdAsync(Guid id)
+  +Task<Usuario> AddAsync(Usuario user)
+  +Task UpdateAsync(Usuario user)
+}
+
+class RefreshTokensRepository {
+  -IUnitOfWork _uow
+  ..Métodos..
+  +Task<RefreshToken> AddAsync(RefreshToken token)
+  +Task RevogarAsync(Guid tokenId)
+  +Task<IReadOnlyList<RefreshToken>> ListarPorUsuarioAsync(Guid userId)
+}
+
+class UnitOfWork {
+  -object _db
+  ..Métodos..
+  +Task<int> SaveChangesAsync()
+  +Task BeginTransactionAsync()
+  +Task CommitAsync()
+  +Task RollbackAsync()
+}
+
+' Implementações e dependências
+RepositoryBase <|-- ChamadosRepository
+RepositoryBase <|-- MensagensRepository
+RepositoryBase <|-- UsuariosRepository
+RepositoryBase <|-- RefreshTokensRepository
+
+IRepositoryBase <|.. RepositoryBase
+IChamadosRepository <|.. ChamadosRepository
+IMensagensRepository <|.. MensagensRepository
+IUsuariosRepository <|.. UsuariosRepository
+IRefreshTokensRepository <|.. RefreshTokensRepository
+
+UnitOfWork ..> IRepositoryBase : coordena
+ChamadosRepository --> UnitOfWork
+MensagensRepository --> UnitOfWork
+UsuariosRepository   --> UnitOfWork
+RefreshTokensRepository --> UnitOfWork
+
+' Repositórios ↔ Domínio (agregados manipulados)
+ChamadosRepository ..> Chamado
+MensagensRepository ..> Mensagem
+UsuariosRepository  ..> Usuario
+RefreshTokensRepository ..> RefreshToken
+
+@enduml

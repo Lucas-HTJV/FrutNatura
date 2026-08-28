@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">frutNatura_funci</string>
+
+    <string name="entrar">Entrar</string>
+
+    <string name="text_cadastro">Cadastre-se</string>
+
+    <string name="textpg2_cadastro">Cadastro</string>
+
+    <string name="text_tela_inicio">Iniciar</string>
+
+</resources>
