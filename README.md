@@ -42,7 +42,8 @@ O backend segue os princípios de **Clean Architecture**, organizado em camadas:
 
 | Integrante | Área |
 |---|---|
-| Lucas | Backend / Banco de dados |
+| Lucas | Backend |
+| Lucas | Bancos de dados |
 | Vitor | Backend |
 | Vitória | Frontend |
 | Thais | Documentação |
