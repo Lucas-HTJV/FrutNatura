@@ -45,6 +45,8 @@ O backend segue os princípios de **Clean Architecture**, organizado em camadas:
 | Lucas | Backend / Banco de dados |
 | Vitor | Backend |
 | Vitória | Frontend |
+| Thais | Documentação |
+| Guilherme | Mobile |
 
 ## 🚀 Como executar
 
