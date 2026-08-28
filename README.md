@@ -6,6 +6,8 @@ Sistema de suporte técnico integrado a um ambiente de vendas simulado, desenvol
 
 Em vez de construir apenas um sistema de chamados simples, o grupo optou por montar um **ambiente completo**: um sistema de vendas com problemas propositalmente inseridos, no qual o usuário navega, realiza processos do dia a dia e pode abrir chamados pedindo auxílio à equipe de suporte — que atende, responde e resolve através de um painel próprio.
 
+O sistema foi Projetado utilizando o tema de Hortifruti, contudo é flexível para ser utilizado em qualquer ambiente desejado, a utilizando em um site de Hortifruti foi apenas uma exemplificação para apresentar a metodologia de como é realizado o suporte e como é feito os envios de chamados.
+
 O projeto também conta com um **bot auxiliar baseado na API da OpenAI**, usado para tirar dúvidas leves dentro do sistema.
 
 ## ✨ Funcionalidades
